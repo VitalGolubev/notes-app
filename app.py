@@ -1,15 +1,16 @@
-# First things, first. Import the wxPython package.
 import wx
+
 from notes_app import ApplicationFrame
 from notes_app.services import NotesService
 
-# Next, create an application object.
-
 app = wx.App()
 
-notes_service = NotesService()
-# Then a frame.
-frm = ApplicationFrame(notes_service, title="Notes App")
+# service layer
+notes_service = NotesService("notes.json")
+notes_service.load_notes()
+
+# Application main window
+frm = ApplicationFrame(notes_service, None, title="Notes App")
 
 # Show it.
 frm.Show()
