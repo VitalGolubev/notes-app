@@ -1,10 +1,16 @@
 import wx
 
+from .services import NotesService
+
 
 class ApplicationFrame(wx.Frame):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, notes_service: NotesService, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.notes_service = notes_service
 
+        self.setup_ui()
+
+    def setup_ui(self):
         self.SetSize(800, 600)
         self.SetMinSize(wx.Size(600, 500))
 
